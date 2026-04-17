@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="彩虹游乐园图标">
+  <defs>
+    <linearGradient id="bg" x1="256" x2="256" y1="32" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#dff6ff" />
+      <stop offset="1" stop-color="#fff7e2" />
+    </linearGradient>
+    <linearGradient id="hill" x1="256" x2="256" y1="280" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8ae072" />
+      <stop offset="1" stop-color="#5ccf94" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="124" fill="url(#bg)" />
+  <circle cx="392" cy="132" r="50" fill="#ffd447" />
+  <circle cx="376" cy="116" r="16" fill="#fff4aa" />
+  <path
+    d="M116 320c26-92 108-154 204-154 53 0 104 19 145 52"
+    fill="none"
+    stroke="#ff7b5f"
+    stroke-linecap="round"
+    stroke-width="34"
+  />
+  <path
+    d="M140 322c23-72 90-120 170-120 43 0 84 14 117 39"
+    fill="none"
+    stroke="#ffb703"
+    stroke-linecap="round"
+    stroke-width="28"
+  />
+  <path
+    d="M166 326c18-54 67-90 126-90 31 0 61 10 86 27"
+    fill="none"
+    stroke="#4ecdc4"
+    stroke-linecap="round"
+    stroke-width="24"
+  />
+  <path
+    d="M192 330c12-37 46-60 88-60 22 0 43 6 60 18"
+    fill="none"
+    stroke="#56a9ff"
+    stroke-linecap="round"
+    stroke-width="20"
+  />
+  <path d="M0 384c42-28 101-39 162-28 49 9 90 8 133-9 69-28 149-22 217 19v146H0z" fill="url(#hill)" />
+  <path d="M164 364c0-58 47-105 105-105s105 47 105 105v80H164z" fill="#fff9f0" />
+  <path d="M194 292h150c13 0 24 11 24 24v128H170V316c0-13 11-24 24-24z" fill="#ff9a62" />
+  <path d="M236 350h66v94h-66z" fill="#ffd7b8" />
+  <circle cx="286" cy="397" r="5" fill="#ff9a62" />
+  <rect x="214" y="326" width="36" height="30" rx="10" fill="#f5fbff" />
+  <rect x="288" y="326" width="36" height="30" rx="10" fill="#f5fbff" />
+  <path d="M222 318l48-44 46 44" fill="none" stroke="#c85c43" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+  <path d="M110 234c0-21 17-38 38-38 10 0 20 4 27 11 8-16 24-27 43-27 24 0 45 18 48 41h4c17 0 30 13 30 30 0 16-13 29-30 29H139c-16 0-29-13-29-29 0-8 3-13 0-17z" fill="#ffffff" opacity=".9" />
+</svg>

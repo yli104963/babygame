@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="theme-color-meta" name="theme-color" content="#ff9a62" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="彩虹游乐园" />
+    <title>彩虹游乐园 | 儿童小游戏合集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=ZCOOL+KuaiLe&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="icons/rainbow-fun-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="sky-decor" aria-hidden="true">
+      <span class="sun"></span>
+      <span class="cloud cloud-a"></span>
+      <span class="cloud cloud-b"></span>
+      <span class="cloud cloud-c"></span>
+      <span class="sparkle sparkle-a"></span>
+      <span class="sparkle sparkle-b"></span>
+    </div>
+
+    <div class="app-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Rainbow Fun House</p>
+          <h1>彩虹游乐园</h1>
+          <p class="hero-text">
+            一个打开就能玩的儿童小游戏合集。小朋友可以点气球、翻卡片、认颜色、数一数，
+            还能比一比谁更多、认一认形状、分一分类、认一认位置、喂喂小动物、帮宝宝找妈妈、看看天气穿什么、分分白天和夜晚、认认热热和凉凉、给大小排排队、帮小东西回家、找影子朋友、找出谁不一样、敲水果、跟着彩灯拍节奏、拼图案、认汉字、学英文、描一描，每玩一会儿还会收集勇气星星。
+          </p>
+          <div class="hero-badges">
+            <span><strong data-game-total>23</strong> 个小游戏</span>
+            <span>适合低龄儿童</span>
+            <span>手机电脑都能玩</span>
+            <span class="hero-profile-pill" id="hero-profile-pill">
+              <span class="hero-profile-avatar" id="hero-profile-avatar" aria-hidden="true">🐥</span>
+              <span>当前档案：<strong id="hero-profile-name">小朋友 1</strong></span>
+            </span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="star-jar">
+            <p class="star-label">勇气星星</p>
+            <strong id="star-count">0</strong>
+            <p class="star-tip" id="global-message">开始玩游戏，就能收集闪闪发光的小星星。</p>
+            <div class="hero-buddy" id="hero-buddy">
+              <span class="hero-buddy-emoji" id="hero-buddy-emoji">🐥</span>
+              <div class="hero-buddy-copy">
+                <p class="hero-buddy-label">当前小伙伴</p>
+                <strong id="hero-buddy-name">太阳小鸡</strong>
+                <p class="hero-buddy-tip" id="hero-buddy-tip">陪你收集第一颗闪闪发光的勇气星星。</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <button class="primary-btn" id="surprise-btn" type="button">随机开始</button>
+            <button class="secondary-btn" id="home-scroll-btn" type="button">看看全部游戏</button>
+            <button class="secondary-btn" id="parent-mode-toggle" type="button">家长模式</button>
+          </div>
+          <div class="session-care-card" id="session-care-card">
+            <div class="session-care-head">
+              <p class="session-care-tag">护眼提醒</p>
+              <span class="session-care-chip" id="session-care-chip">已关闭</span>
+            </div>
+            <strong id="session-care-title">休息提醒已关闭</strong>
+            <p id="session-care-copy">去家长模式里打开提醒后，小朋友玩一阵子就会收到温柔提示。</p>
+            <div class="session-care-progress" aria-hidden="true">
+              <span id="session-care-progress-fill"></span>
+            </div>
+          </div>
+          <div class="app-install-card" id="app-install-card">
+            <div class="app-install-copy">
+              <p class="app-install-tag">游乐园小应用</p>
+              <strong id="app-install-title">正在准备离线模式</strong>
+              <p id="app-install-note">
+                在支持的浏览器里，可以装到手机或平板主屏；准备好以后，已经打开过的内容断网也能继续玩。
+              </p>
+            </div>
+            <div class="app-install-actions">
+              <button class="secondary-btn app-install-btn" id="install-app-btn" type="button" hidden disabled>
+                装到主屏
+              </button>
+              <span class="app-connection-pill" id="app-connection-pill" aria-live="polite">联网中</span>
+            </div>
+          </div>
+        </aside>
+      </header>
+
+      <section class="featured-strip" id="featured-strip" aria-label="精选游戏">
+        <div class="featured-strip-head">
+          <div>
+            <p class="panel-tag">精选入口</p>
+            <h2 id="featured-strip-title">先从这几站开始</h2>
+            <p class="featured-strip-copy" id="featured-strip-copy">打开就能玩，先点一个开始热热身。</p>
+          </div>
+          <span class="featured-strip-count" id="featured-strip-count">4 个精选</span>
+        </div>
+        <div class="featured-grid" id="featured-grid"></div>
+      </section>
+
+      <section class="finder-card" id="game-finder" aria-label="快速找游戏">
+        <div class="finder-head">
+          <div>
+            <p class="panel-tag">快速找游戏</p>
+            <h2>按名字或类型看看今天玩哪一站</h2>
+            <p class="finder-copy">可以输入游戏名字里的字，也能按类型筛一筛；下面还会放最近玩过的快捷入口。</p>
+          </div>
+          <button class="secondary-btn" id="finder-clear" type="button">清空筛选</button>
+        </div>
+
+        <div class="finder-tools">
+          <label class="finder-search" for="game-search-input">
+            <span class="finder-search-label">搜一搜</span>
+              <input
+                id="game-search-input"
+                type="search"
+                placeholder="试试输入 颜色、气球、拼图、动物、qiqiu……"
+                autocomplete="off"
+                spellcheck="false"
+              />
+          </label>
+
+          <div class="finder-summary">
+            <span>当前显示 <strong id="finder-visible-count">23</strong>/<strong data-game-total>23</strong></span>
+            <p id="finder-summary-text">正在显示全部小游戏。</p>
+          </div>
+        </div>
+
+        <div class="finder-chip-row" id="finder-chip-row" aria-label="游戏分类筛选"></div>
+
+        <div class="finder-recent-card">
+          <div class="finder-recent-head">
+            <strong id="finder-recent-title">最近玩过</strong>
+            <p id="finder-recent-copy">开始玩以后，这里会记住最近玩过的小游戏，方便下次更快继续。</p>
+          </div>
+          <div class="finder-recent-grid" id="quick-recent-strip" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="parent-panel" id="parent-panel" hidden>
+        <div class="parent-panel-head">
+          <div>
+            <p class="panel-tag">家长模式</p>
+            <h2>家长设置台</h2>
+            <p class="panel-copy">可以切换孩子档案、调难度、开关声音，也能决定哪些游戏显示给孩子玩。</p>
+          </div>
+          <button class="secondary-btn" id="parent-close" type="button">收起设置</button>
+        </div>
+
+        <div class="parent-card">
+          <p class="parent-card-title">孩子档案</p>
+          <p class="parent-card-note">每个孩子都能拥有自己单独的星星、徽章、小伙伴、贴纸和最好成绩。</p>
+          <div class="parent-profile-summary">
+            <span>当前档案 <strong id="parent-active-profile-name">小朋友 1</strong></span>
+            <span>共 <strong id="parent-profile-count">1</strong> 个孩子档案</span>
+          </div>
+          <div class="parent-profile-list" id="parent-profile-list" aria-label="孩子档案列表"></div>
+          <div class="parent-storage-actions">
+            <button class="secondary-btn" id="parent-add-profile" type="button">新建档案</button>
+            <button class="secondary-btn" id="parent-rename-profile" type="button">修改名字</button>
+            <button class="secondary-btn danger-btn" id="parent-delete-profile" type="button">删除当前档案</button>
+          </div>
+          <div class="parent-storage-actions">
+            <button class="secondary-btn" id="parent-move-profile-up" type="button">向前排序</button>
+            <button class="secondary-btn" id="parent-move-profile-down" type="button">向后排序</button>
+          </div>
+          <p class="parent-profile-status" id="parent-profile-status">切换档案后，这个页面会立刻显示对应孩子自己的成长进度，也可以调整档案顺序。</p>
+        </div>
+
+        <div class="parent-card">
+          <p class="parent-card-title">档案外观</p>
+          <p class="parent-card-note">给当前孩子挑一个头像和主题色，切换档案时首页也会一起变成这个孩子喜欢的样子。</p>
+          <div class="parent-profile-preview" id="parent-profile-preview">
+            <span class="parent-profile-preview-avatar" id="parent-profile-preview-avatar" aria-hidden="true">🐥</span>
+            <div class="parent-profile-preview-copy">
+              <strong id="parent-profile-preview-name">小朋友 1</strong>
+              <p id="parent-profile-preview-theme">当前主题：暖阳橙</p>
+            </div>
+          </div>
+          <p class="parent-section-label">选择头像</p>
+          <div class="parent-avatar-list" id="parent-avatar-list" aria-label="档案头像"></div>
+          <p class="parent-section-label">选择主题色</p>
+          <div class="parent-theme-list" id="parent-theme-list" aria-label="档案主题色"></div>
+        </div>
+
+        <div class="parent-controls">
+          <div class="parent-card">
+            <p class="parent-card-title">整体难度</p>
+            <div class="parent-choice-row" id="difficulty-controls" aria-label="难度设置">
+              <button class="mode-btn" id="difficulty-easy" type="button">简单</button>
+              <button class="mode-btn active" id="difficulty-normal" type="button">普通</button>
+              <button class="mode-btn" id="difficulty-hard" type="button">挑战</button>
+            </div>
+            <p class="parent-card-note" id="difficulty-note">普通模式：节奏适中，适合大多数小朋友。</p>
+          </div>
+
+          <div class="parent-card">
+            <p class="parent-card-title">声音设置</p>
+            <div class="parent-choice-row">
+              <button class="mode-btn active" id="sound-toggle" type="button">声音已开启</button>
+            </div>
+            <p class="parent-card-note">会影响中英文发音按钮和页面里的提示音。</p>
+          </div>
+
+          <div class="parent-card">
+            <p class="parent-card-title">游玩提醒</p>
+            <div class="parent-choice-row" aria-label="游玩提醒">
+              <button class="mode-btn active" id="break-reminder-off" type="button">关闭</button>
+              <button class="mode-btn" id="break-reminder-10" type="button">10 分钟</button>
+              <button class="mode-btn" id="break-reminder-20" type="button">20 分钟</button>
+              <button class="mode-btn" id="break-reminder-30" type="button">30 分钟</button>
+            </div>
+            <p class="parent-card-note" id="break-reminder-note">关闭后不会弹出休息提醒；想更护眼一点的话，20 分钟会比较合适。</p>
+          </div>
+        </div>
+
+        <div class="parent-card">
+          <p class="parent-card-title">显示哪些游戏</p>
+          <p class="parent-card-note">至少保留 1 个游戏，设置会保存在当前浏览器。</p>
+          <div class="parent-game-list" id="parent-game-list" aria-label="游戏显示设置"></div>
+        </div>
+
+        <div class="parent-card">
+          <p class="parent-card-title">进度管理</p>
+          <p class="parent-card-note">可以导出全部孩子档案，也能单独导出当前孩子档案；导入单个孩子档案时，可以作为新档案加入，或直接覆盖当前档案。</p>
+          <div class="parent-storage-actions">
+            <button class="secondary-btn" id="parent-export-data" type="button">导出全部档案</button>
+            <button class="secondary-btn" id="parent-export-current-profile" type="button">导出当前档案</button>
+            <button class="secondary-btn" id="parent-import-data" type="button">导入档案</button>
+            <button class="secondary-btn" id="parent-import-current-profile" type="button">覆盖当前档案导入</button>
+            <button class="secondary-btn danger-btn" id="parent-reset-data" type="button">清空当前进度</button>
+          </div>
+          <input class="parent-file-input" id="parent-import-file" type="file" accept=".json,application/json" />
+          <p class="parent-storage-status" id="parent-storage-status">导出全部档案会保留所有孩子；覆盖当前档案导入时，适合把另一个设备上的同一个孩子同步回来。</p>
+        </div>
+      </section>
+
+      <section class="guide-strip">
+        <div class="hub-card guide-card">
+          <div class="hub-head">
+            <div>
+              <p class="panel-tag">推荐路线</p>
+            <h2 id="guide-title">第一次来，先玩这 3 站</h2>
+            <p class="panel-copy" id="guide-copy">会根据当前档案的成长进度，推荐一条更适合现在的三站小游戏路线。</p>
+          </div>
+          <div class="hub-stats">
+              <span>已探索 <strong id="guide-explored-count">0</strong>/<strong data-game-total>23</strong></span>
+              <span>路线站点 <strong id="guide-step-count">0</strong></span>
+            </div>
+          </div>
+
+          <div class="guide-layout">
+            <div class="guide-summary">
+              <p class="guide-stage" id="guide-stage">第一次来玩</p>
+              <h3 id="guide-summary-title">小朋友 1 的彩虹热身路线</h3>
+              <p class="guide-summary-copy" id="guide-summary-copy">先从轻松的小游戏开始，再去认识新的小站点。</p>
+              <div class="guide-chip-row" id="guide-chip-row" aria-label="路线亮点"></div>
+              <div class="guide-actions">
+                <button class="primary-btn" id="guide-start-route" type="button">从第一站开始</button>
+                <button class="secondary-btn" id="guide-refresh-route" type="button">换一条路线</button>
+              </div>
+            </div>
+
+            <div class="guide-grid" id="guide-grid" aria-label="推荐路线"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resume-strip">
+        <div class="hub-card resume-card">
+          <div class="hub-head">
+            <div>
+              <p class="panel-tag">继续玩</p>
+              <h2>打开就能接着玩</h2>
+              <p class="panel-copy">会记住当前孩子最近玩过的小游戏，下次打开时更容易继续。</p>
+            </div>
+            <div class="hub-stats">
+              <span>最近入口 <strong id="resume-recent-count">0</strong></span>
+              <span>快捷选择 <strong id="resume-choice-count">0</strong></span>
+            </div>
+          </div>
+
+          <div class="resume-layout">
+            <div class="resume-summary">
+              <p class="resume-status" id="resume-status">还没有最近记录</p>
+              <h3 id="resume-title">先挑一站开始玩</h3>
+              <p class="resume-copy" id="resume-copy">玩过以后，这里会记住最近玩过的小游戏，下一次就能更快回到喜欢的那一站。</p>
+              <div class="resume-actions">
+                <button class="primary-btn" id="resume-continue-btn" type="button">去玩这一站</button>
+                <button class="secondary-btn" id="resume-route-btn" type="button">去推荐路线</button>
+              </div>
+            </div>
+
+            <div class="resume-grid" id="resume-grid" aria-label="继续玩入口"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="progress-hub">
+        <div class="hub-card map-card">
+          <div class="hub-head">
+            <div>
+              <p class="panel-tag">游乐园地图</p>
+            <h2>今天要去哪一站？</h2>
+            <p class="panel-copy">从地图上挑一站开始玩，也可以看看哪几站已经留下了你的足迹。</p>
+          </div>
+          <div class="hub-stats">
+              <span>已体验 <strong id="explored-count">0</strong>/<strong data-game-total>23</strong></span>
+              <span>奖励星星 <strong id="hub-star-count">0</strong></span>
+            </div>
+          </div>
+          <div class="map-grid" id="map-grid" aria-label="游乐园地图"></div>
+        </div>
+
+        <div class="hub-card badge-card">
+          <div class="hub-head">
+            <div>
+              <p class="panel-tag">奖章墙</p>
+              <h2>闪亮小徽章</h2>
+              <p class="panel-copy">每玩一会儿，墙上就会多亮起几枚属于你的游乐园徽章。</p>
+            </div>
+            <div class="hub-stats">
+              <span>已点亮 <strong id="badge-count">0</strong>/<strong id="badge-total">0</strong></span>
+            </div>
+          </div>
+          <div class="badge-grid" id="badge-grid" aria-label="奖章墙"></div>
+        </div>
+      </section>
+
+      <section class="challenge-strip">
+        <div class="hub-card challenge-card">
+        <div class="hub-head">
+            <div>
+              <p class="panel-tag">今日挑战</p>
+              <h2>今天试试这几件事</h2>
+              <p class="panel-copy">每完成一张任务卡都会拿到星星，3 张全部完成还会再送一份今日庆祝。</p>
+            </div>
+            <div class="hub-stats">
+              <span>已完成 <strong id="challenge-done-count">0</strong>/<strong id="challenge-total-count">0</strong></span>
+            </div>
+          </div>
+          <div class="challenge-grid" id="challenge-grid" aria-label="今日挑战"></div>
+        </div>
+      </section>
+
+      <section class="checkin-strip">
+        <div class="hub-card checkin-card">
+          <div class="hub-head">
+            <div>
+              <p class="panel-tag">成长打卡</p>
+              <h2>连续来玩的彩虹日历</h2>
+              <p class="panel-copy">每天打开一次就会在今天盖上小印章，连着来玩会看到小火苗慢慢变长。</p>
+            </div>
+            <div class="hub-stats">
+              <span>连续 <strong id="checkin-streak-count">0</strong> 天</span>
+              <span>累计 <strong id="checkin-total-count">0</strong> 天</span>
+            </div>
+          </div>
+
+          <div class="checkin-layout">
+            <div class="checkin-summary">
+              <p class="checkin-status" id="checkin-status">今天已打卡</p>
+              <h3 id="checkin-title">小朋友 1 的彩虹脚印</h3>
+              <p class="checkin-copy" id="checkin-copy">今天打开游乐园后，就会在小日历上留下一个新的脚印。</p>
+              <div class="checkin-actions">
+                <button class="primary-btn" id="checkin-start-btn" type="button">去今天推荐站</button>
+                <button class="secondary-btn" id="checkin-resume-btn" type="button">继续上次那一站</button>
+              </div>
+            </div>
+
+            <div class="checkin-grid" id="checkin-grid" aria-label="成长打卡日历"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="buddy-strip">
+        <div class="hub-card buddy-card">
+          <div class="hub-head">
+            <div>
+              <p class="panel-tag">成长小伙伴</p>
+              <h2>带一个伙伴一起玩</h2>
+              <p class="panel-copy">星星越多、奖章越亮，就会有更多新的陪玩小伙伴来彩虹游乐园和你见面。</p>
+            </div>
+            <div class="hub-stats">
+              <span>已认识 <strong id="buddy-count">0</strong>/<strong id="buddy-total">0</strong></span>
+            </div>
+          </div>
+
+          <div class="buddy-spotlight">
+            <div class="buddy-current" id="buddy-current">
+              <span class="buddy-current-emoji" id="buddy-current-emoji">🐥</span>
+              <div>
+                <p class="buddy-current-label">当前陪玩伙伴</p>
+                <h3 id="buddy-current-name">太阳小鸡</h3>
+                <p class="buddy-current-copy" id="buddy-current-copy">喜欢看你一点点收集星星，也会在一旁为你加油。</p>
+              </div>
+            </div>
+
+            <div class="buddy-grid" id="buddy-grid" aria-label="成长小伙伴选择"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sticker-strip">
+        <div class="hub-card sticker-card">
+          <div class="hub-head">
+            <div>
+              <p class="panel-tag">魔法贴纸册</p>
+              <h2>把喜欢的贴纸收起来</h2>
+              <p class="panel-copy">玩得越多，贴纸册里就会出现越多亮晶晶的小图案，还能挑一个作为今天最喜欢的贴纸。</p>
+            </div>
+            <div class="hub-stats">
+              <span>已收集 <strong id="sticker-count">0</strong>/<strong id="sticker-total">0</strong></span>
+            </div>
+          </div>
+
+          <div class="sticker-spotlight">
+            <div class="sticker-current" id="sticker-current">
+              <span class="sticker-current-emoji" id="sticker-current-emoji">✨</span>
+              <div>
+                <p class="sticker-current-label">今天最喜欢的贴纸</p>
+                <h3 id="sticker-current-name">闪亮星星贴</h3>
+                <p class="sticker-current-copy" id="sticker-current-copy">一开始就会在贴纸册里等你，像第一颗勇气星星一样亮亮的。</p>
+              </div>
+            </div>
+
+            <div class="sticker-grid" id="sticker-grid" aria-label="魔法贴纸册"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="games-stage" id="games-stage">
+        <section class="game-tabs-dock" id="game-tabs-dock" aria-label="当前游戏菜单">
+          <div class="game-tabs-dock-copy">
+            <span class="game-tabs-dock-label">当前游戏</span>
+            <strong id="game-tabs-current-label">气球碰碰乐</strong>
+          </div>
+          <button class="secondary-btn game-tabs-toggle" id="game-tabs-toggle" type="button" aria-expanded="false" aria-controls="game-tabs">
+            切换游戏
+          </button>
+        </section>
+
+        <nav class="game-tabs" id="game-tabs" aria-label="小游戏导航" hidden>
+          <button class="tab-btn active" data-panel="panel-balloon" type="button">气球碰碰乐</button>
+          <button class="tab-btn" data-panel="panel-memory" type="button">动物翻翻乐</button>
+          <button class="tab-btn" data-panel="panel-color" type="button">颜色找找看</button>
+          <button class="tab-btn" data-panel="panel-shadow" type="button">影子找朋友</button>
+          <button class="tab-btn" data-panel="panel-different" type="button">谁不一样</button>
+          <button class="tab-btn" data-panel="panel-counting" type="button">数数小花园</button>
+          <button class="tab-btn" data-panel="panel-size" type="button">大小排排队</button>
+          <button class="tab-btn" data-panel="panel-more" type="button">比一比谁更多</button>
+          <button class="tab-btn" data-panel="panel-shape" type="button">形状找找看</button>
+          <button class="tab-btn" data-panel="panel-sort" type="button">分类小高手</button>
+          <button class="tab-btn" data-panel="panel-position" type="button">位置找找看</button>
+          <button class="tab-btn" data-panel="panel-food" type="button">喂喂小动物</button>
+          <button class="tab-btn" data-panel="panel-family" type="button">宝宝找妈妈</button>
+          <button class="tab-btn" data-panel="panel-weather" type="button">天气穿什么</button>
+          <button class="tab-btn" data-panel="panel-daynight" type="button">白天和夜晚</button>
+          <button class="tab-btn" data-panel="panel-hotcold" type="button">热热还是凉凉</button>
+          <button class="tab-btn" data-panel="panel-home" type="button">帮它回家</button>
+          <button class="tab-btn" data-panel="panel-whack" type="button">水果打地鼠</button>
+          <button class="tab-btn" data-panel="panel-rhythm" type="button">灯光跟我拍</button>
+          <button class="tab-btn" data-panel="panel-puzzle" type="button">花园拼拼乐</button>
+          <button class="tab-btn" data-panel="panel-words" type="button">识字小卡片</button>
+          <button class="tab-btn" data-panel="panel-english" type="button">英语单词卡</button>
+          <button class="tab-btn" data-panel="panel-trace" type="button">描线写字页</button>
+        </nav>
+
+        <main class="game-grid" id="games">
+        <section class="game-panel balloon-panel active" id="panel-balloon">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">反应小游戏</p>
+              <h2>气球碰碰乐</h2>
+              <p class="panel-copy">在 30 秒里点破尽可能多的彩色气球吧。</p>
+            </div>
+            <div class="score-pills">
+              <span>得分 <strong id="balloon-score">0</strong></span>
+              <span>时间 <strong id="balloon-time">30</strong>s</span>
+              <span>最好成绩 <strong id="balloon-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="balloon-start" type="button">开始挑战</button>
+            <button class="secondary-btn" id="balloon-reset" type="button">重新来过</button>
+          </div>
+
+          <p class="status-text" id="balloon-status">准备好了就开始点气球，看看你能拿多少分。</p>
+          <div class="balloon-area" id="balloon-area" aria-label="气球游戏区域"></div>
+        </section>
+
+        <section class="game-panel memory-panel" id="panel-memory">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">记忆小游戏</p>
+              <h2>动物翻翻乐</h2>
+              <p class="panel-copy">翻开两张一样的小动物卡片，把它们都找出来。</p>
+            </div>
+            <div class="score-pills">
+              <span>步数 <strong id="memory-moves">0</strong></span>
+              <span>配对 <strong id="memory-pairs">0</strong>/<strong id="memory-total">8</strong></span>
+              <span>最佳步数 <strong id="memory-best">--</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="memory-new" type="button">重新洗牌</button>
+          </div>
+
+          <p class="status-text" id="memory-status">试着记住每张卡片的位置，把相同的小动物配成一对。</p>
+          <div class="memory-board" id="memory-board" aria-label="翻翻乐卡片区域"></div>
+        </section>
+
+        <section class="game-panel color-panel" id="panel-color">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">认知小游戏</p>
+              <h2>颜色找找看</h2>
+              <p class="panel-copy">看看上面的颜色，再从下面找到一模一样的颜色。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="color-score">0</strong></span>
+              <span>连对 <strong id="color-streak">0</strong></span>
+              <span>最好连对 <strong id="color-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="color-refresh" type="button">换一道题</button>
+            <button class="secondary-btn" id="color-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="color-status">看看目标颜色，再点下面的小色卡。</p>
+
+          <div class="color-stage">
+            <div class="target-color-card">
+              <p>请找到这个颜色</p>
+              <div class="color-swatch" id="color-target-swatch" aria-hidden="true"></div>
+              <h3 id="color-target-name">草莓红</h3>
+            </div>
+            <div class="color-options" id="color-options" aria-label="颜色选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel shadow-panel" id="panel-shadow">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">观察小游戏</p>
+              <h2>影子找朋友</h2>
+              <p class="panel-copy">看看神秘小影子，再从下面找出它原来的样子。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="shadow-score">0</strong></span>
+              <span>连对 <strong id="shadow-streak">0</strong></span>
+              <span>最好连对 <strong id="shadow-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="shadow-refresh" type="button">换一个影子</button>
+            <button class="secondary-btn" id="shadow-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="shadow-status">看看黑色小影子，再选出它是谁。</p>
+
+          <div class="shadow-stage">
+            <div class="shadow-card" id="shadow-card">
+              <p class="shadow-card-tip">这个小影子是谁？</p>
+              <span class="shadow-emoji" id="shadow-emoji">🐰</span>
+              <strong class="shadow-title" id="shadow-title">神秘小影子</strong>
+              <p class="shadow-note" id="shadow-note">从右边找出和它一模一样的朋友。</p>
+            </div>
+            <div class="shadow-options" id="shadow-options" aria-label="影子找朋友选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel different-panel" id="panel-different">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">观察小游戏</p>
+              <h2>谁不一样</h2>
+              <p class="panel-copy">看看这一排小图案，找出和其他朋友不一样的那个。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="different-score">0</strong></span>
+              <span>连对 <strong id="different-streak">0</strong></span>
+              <span>最好连对 <strong id="different-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="different-refresh" type="button">换一组图案</button>
+            <button class="secondary-btn" id="different-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="different-status">把和大家不一样的那个找出来吧。</p>
+
+          <div class="different-stage">
+            <div class="different-card">
+              <p class="different-card-tip">这里只有一个不一样</p>
+              <span class="different-card-icon" aria-hidden="true">🔎</span>
+              <strong class="different-card-title" id="different-title">找出不一样的朋友</strong>
+              <p class="different-card-note" id="different-note">看看右边这些小图案，点一下和其他不同的那个。</p>
+            </div>
+            <div class="different-options" id="different-options" aria-label="谁不一样选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel counting-panel" id="panel-counting">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">启蒙小游戏</p>
+              <h2>数数小花园</h2>
+              <p class="panel-copy">数一数画面里有多少个小东西，再选出正确数字。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="counting-score">0</strong></span>
+              <span>连对 <strong id="counting-streak">0</strong></span>
+              <span>最好连对 <strong id="counting-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="counting-refresh" type="button">换一题</button>
+            <button class="secondary-btn" id="counting-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="counting-status">先慢慢数，再点你觉得正确的数字。</p>
+
+          <div class="count-stage">
+            <p class="count-question" id="count-question">数一数，有几个小星星？</p>
+            <div class="count-display" id="count-display" aria-label="数数展示区域"></div>
+            <div class="count-options" id="count-options" aria-label="数字选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel size-panel" id="panel-size">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">启蒙小游戏</p>
+              <h2>大小排排队</h2>
+              <p class="panel-copy">看看这些朋友谁更小、谁更大，再从小到大点一遍。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="size-score">0</strong></span>
+              <span>连对 <strong id="size-streak">0</strong></span>
+              <span>最好连对 <strong id="size-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="size-refresh" type="button">换一组大小</button>
+            <button class="secondary-btn" id="size-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="size-status">先找最小的朋友，再一点点找到更大的。</p>
+
+          <div class="size-stage">
+            <div class="size-card">
+              <p class="size-card-tip">从小排到大</p>
+              <span class="size-card-icon" id="size-icon" aria-hidden="true">⭐</span>
+              <strong class="size-card-title" id="size-title">帮小朋友排好队</strong>
+              <p class="size-card-note" id="size-note">先点最小的，再点越来越大的朋友。</p>
+            </div>
+            <div class="size-options" id="size-options" aria-label="大小排排队选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel more-panel" id="panel-more">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">启蒙小游戏</p>
+              <h2>比一比谁更多</h2>
+              <p class="panel-copy">看看左边和右边，找出哪一边的小队伍更多。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="more-score">0</strong></span>
+              <span>连对 <strong id="more-streak">0</strong></span>
+              <span>最好连对 <strong id="more-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="more-refresh" type="button">换一组比一比</button>
+            <button class="secondary-btn" id="more-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="more-status">看看左边和右边，找出更多的那一边。</p>
+
+          <div class="more-stage">
+            <p class="more-question" id="more-question">哪边的小鱼更多？</p>
+            <div class="more-board">
+              <button class="more-side" id="more-left" type="button" aria-label="左边数量比较"></button>
+              <button class="more-side" id="more-right" type="button" aria-label="右边数量比较"></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="game-panel shape-panel" id="panel-shape">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">启蒙小游戏</p>
+              <h2>形状找找看</h2>
+              <p class="panel-copy">看看上面的形状，再从下面找出一模一样的那个。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="shape-score">0</strong></span>
+              <span>连对 <strong id="shape-streak">0</strong></span>
+              <span>最好连对 <strong id="shape-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="shape-refresh" type="button">换一个形状</button>
+            <button class="secondary-btn" id="shape-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="shape-status">看看上面的形状，再找出一模一样的朋友。</p>
+
+          <div class="shape-stage">
+            <div class="shape-card">
+              <p class="shape-card-tip">请找到这个形状</p>
+              <span class="shape-icon" id="shape-icon" aria-hidden="true">●</span>
+              <strong class="shape-title" id="shape-title">圆形</strong>
+              <p class="shape-note" id="shape-note">下面哪个和它长得一模一样呢？</p>
+            </div>
+            <div class="shape-options" id="shape-options" aria-label="形状找找看选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel sort-panel" id="panel-sort">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">启蒙小游戏</p>
+              <h2>分类小高手</h2>
+              <p class="panel-copy">看看这个小东西属于哪一类，再轻轻点一下把它送过去。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="sort-score">0</strong></span>
+              <span>连对 <strong id="sort-streak">0</strong></span>
+              <span>最好连对 <strong id="sort-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="sort-refresh" type="button">换一个小东西</button>
+            <button class="secondary-btn" id="sort-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="sort-status">看看这个小东西，再找出它属于哪一类。</p>
+
+          <div class="sort-stage">
+            <div class="sort-card">
+              <p class="sort-card-tip">它属于哪一类？</p>
+              <span class="sort-emoji" id="sort-emoji">🍎</span>
+              <strong class="sort-title" id="sort-title">小苹果</strong>
+              <p class="sort-note" id="sort-note">下面哪个分类最适合它呢？</p>
+            </div>
+            <div class="sort-options" id="sort-options" aria-label="分类小高手选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel position-panel" id="panel-position">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">启蒙小游戏</p>
+              <h2>位置找找看</h2>
+              <p class="panel-copy">看看小东西站在方格里的哪里，再轻轻点出它的位置。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="position-score">0</strong></span>
+              <span>连对 <strong id="position-streak">0</strong></span>
+              <span>最好连对 <strong id="position-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="position-refresh" type="button">换一个位置</button>
+            <button class="secondary-btn" id="position-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="position-status">看看方格里的小东西，再说说它在什么位置。</p>
+
+          <div class="position-stage">
+            <div class="position-card">
+              <p class="position-card-tip">它在哪里？</p>
+              <span class="position-emoji" id="position-emoji">🐥</span>
+              <strong class="position-title" id="position-title">小鸡站在哪里？</strong>
+              <p class="position-note" id="position-note">看看方格里的小东西，再找出它的位置。</p>
+            </div>
+            <div class="position-playground">
+              <div class="position-board" id="position-board" aria-label="位置找找看方格"></div>
+              <div class="position-options" id="position-options" aria-label="位置找找看选项"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="game-panel food-panel" id="panel-food">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">认知小游戏</p>
+              <h2>喂喂小动物</h2>
+              <p class="panel-copy">看看小动物想吃什么，再轻轻点一下把食物送给它。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="food-score">0</strong></span>
+              <span>连对 <strong id="food-streak">0</strong></span>
+              <span>最好连对 <strong id="food-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="food-refresh" type="button">换个小动物</button>
+            <button class="secondary-btn" id="food-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="food-status">看看小动物，再找出它最想吃的食物。</p>
+
+          <div class="food-stage">
+            <div class="food-card">
+              <p class="food-card-tip">它想吃什么？</p>
+              <span class="food-emoji" id="food-emoji">🐰</span>
+              <strong class="food-title" id="food-title">小兔子爱吃什么？</strong>
+              <p class="food-note" id="food-note">下面哪个食物最适合送给它呢？</p>
+            </div>
+            <div class="food-options" id="food-options" aria-label="喂喂小动物选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel family-panel" id="panel-family">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">认知小游戏</p>
+              <h2>宝宝找妈妈</h2>
+              <p class="panel-copy">看看这个小宝宝，再轻轻点一下帮它找到妈妈。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="family-score">0</strong></span>
+              <span>连对 <strong id="family-streak">0</strong></span>
+              <span>最好连对 <strong id="family-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="family-refresh" type="button">换个宝宝</button>
+            <button class="secondary-btn" id="family-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="family-status">看看这个小宝宝，再找出它的妈妈。</p>
+
+          <div class="family-stage">
+            <div class="family-card">
+              <p class="family-card-tip">谁是它的妈妈？</p>
+              <span class="family-emoji" id="family-emoji">🐣</span>
+              <strong class="family-title" id="family-title">鸡宝宝在找妈妈</strong>
+              <p class="family-note" id="family-note">下面哪一位最适合来接它呢？</p>
+            </div>
+            <div class="family-options" id="family-options" aria-label="宝宝找妈妈选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel weather-panel" id="panel-weather">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">认知小游戏</p>
+              <h2>天气穿什么</h2>
+              <p class="panel-copy">看看外面的天气，再轻轻点一下选出更合适的衣服或小物件。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="weather-score">0</strong></span>
+              <span>连对 <strong id="weather-streak">0</strong></span>
+              <span>最好连对 <strong id="weather-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="weather-refresh" type="button">换个天气</button>
+            <button class="secondary-btn" id="weather-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="weather-status">看看今天的天气，再选一件最合适的东西。</p>
+
+          <div class="weather-stage">
+            <div class="weather-card">
+              <p class="weather-card-tip">这种天气带什么？</p>
+              <span class="weather-emoji" id="weather-emoji">🌦️</span>
+              <strong class="weather-title" id="weather-title">今天出门要带什么？</strong>
+              <p class="weather-note" id="weather-note">下面哪个最适合现在的天气呢？</p>
+            </div>
+            <div class="weather-options" id="weather-options" aria-label="天气穿什么选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel daynight-panel" id="panel-daynight">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">认知小游戏</p>
+              <h2>白天和夜晚</h2>
+              <p class="panel-copy">看看这件事更像什么时候发生，再轻轻点一下选白天还是夜晚。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="daynight-score">0</strong></span>
+              <span>连对 <strong id="daynight-streak">0</strong></span>
+              <span>最好连对 <strong id="daynight-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="daynight-refresh" type="button">换一题</button>
+            <button class="secondary-btn" id="daynight-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="daynight-status">看看这件事，再选白天还是夜晚。</p>
+
+          <div class="daynight-stage">
+            <div class="daynight-card">
+              <p class="daynight-card-tip">它更像什么时候？</p>
+              <span class="daynight-emoji" id="daynight-emoji">🌙</span>
+              <strong class="daynight-title" id="daynight-title">什么时候更适合睡觉呢？</strong>
+              <p class="daynight-note" id="daynight-note">下面选一个更合适的时间吧。</p>
+            </div>
+            <div class="daynight-options" id="daynight-options" aria-label="白天和夜晚选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel hotcold-panel" id="panel-hotcold">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">认知小游戏</p>
+              <h2>热热还是凉凉</h2>
+              <p class="panel-copy">看看这个东西更像热热的还是凉凉的，再轻轻点一下选出来。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="hotcold-score">0</strong></span>
+              <span>连对 <strong id="hotcold-streak">0</strong></span>
+              <span>最好连对 <strong id="hotcold-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="hotcold-refresh" type="button">换一题</button>
+            <button class="secondary-btn" id="hotcold-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="hotcold-status">看看这个东西，再选热热的还是凉凉的。</p>
+
+          <div class="hotcold-stage">
+            <div class="hotcold-card">
+              <p class="hotcold-card-tip">它摸起来更像什么？</p>
+              <span class="hotcold-emoji" id="hotcold-emoji">🍲</span>
+              <strong class="hotcold-title" id="hotcold-title">这碗汤更像热热的还是凉凉的？</strong>
+              <p class="hotcold-note" id="hotcold-note">下面选一个更合适的感觉吧。</p>
+            </div>
+            <div class="hotcold-options" id="hotcold-options" aria-label="热热还是凉凉选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel home-panel" id="panel-home">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">认知小游戏</p>
+              <h2>帮它回家</h2>
+              <p class="panel-copy">看看这个小东西最适合去哪里，再轻轻点一下送它回家。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="home-score">0</strong></span>
+              <span>连对 <strong id="home-streak">0</strong></span>
+              <span>最好连对 <strong id="home-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="home-refresh" type="button">换一个小东西</button>
+            <button class="secondary-btn" id="home-reset" type="button">重新计分</button>
+          </div>
+
+          <p class="status-text" id="home-status">看看它属于哪里，再送它回到正确的地方。</p>
+
+          <div class="home-stage">
+            <div class="home-card">
+              <p class="home-card-tip">帮它找到家</p>
+              <span class="home-emoji" id="home-emoji">🐟</span>
+              <strong class="home-title" id="home-title">小鱼要回哪里？</strong>
+              <p class="home-note" id="home-note">下面哪个地方最适合它呢？</p>
+            </div>
+            <div class="home-options" id="home-options" aria-label="帮它回家选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel whack-panel" id="panel-whack">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">反应小游戏</p>
+              <h2>水果打地鼠</h2>
+              <p class="panel-copy">小水果会从果园洞洞里冒出来，快快点中它们。</p>
+            </div>
+            <div class="score-pills">
+              <span>点中 <strong id="whack-score">0</strong></span>
+              <span>时间 <strong id="whack-time">25</strong>s</span>
+              <span>最好成绩 <strong id="whack-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="whack-start" type="button">开始挑战</button>
+            <button class="secondary-btn" id="whack-reset" type="button">重新来过</button>
+          </div>
+
+          <p class="status-text" id="whack-status">按开始按钮，小水果就会从果园里探出头。</p>
+          <div class="whack-board" id="whack-board" aria-label="水果打地鼠游戏区域"></div>
+        </section>
+
+        <section class="game-panel rhythm-panel" id="panel-rhythm">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">记忆小游戏</p>
+              <h2>灯光跟我拍</h2>
+              <p class="panel-copy">先看彩灯亮起的顺序，再跟着按一遍。</p>
+            </div>
+            <div class="score-pills">
+              <span>回合 <strong id="rhythm-round">0</strong></span>
+              <span>最好回合 <strong id="rhythm-best">0</strong></span>
+              <span>状态 <strong id="rhythm-mode">准备中</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="rhythm-start" type="button">开始游戏</button>
+            <button class="secondary-btn" id="rhythm-reset" type="button">重新开始</button>
+          </div>
+
+          <p class="status-text" id="rhythm-status">先看彩灯顺序，再按出同样的顺序。</p>
+          <div class="rhythm-board" id="rhythm-board" aria-label="灯光记忆游戏区域"></div>
+        </section>
+
+        <section class="game-panel puzzle-panel" id="panel-puzzle">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">思维小游戏</p>
+              <h2>花园拼拼乐</h2>
+              <p class="panel-copy">看着参考图，把下面打乱的小图案拼回原来的样子。</p>
+            </div>
+            <div class="score-pills">
+              <span>步数 <strong id="puzzle-steps">0</strong></span>
+              <span>就位 <strong id="puzzle-matched">0</strong>/9</span>
+              <span>最佳步数 <strong id="puzzle-best">--</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="puzzle-new" type="button">重新洗牌</button>
+          </div>
+
+          <p class="status-text" id="puzzle-status">先看看上面的参考图，再点两块交换位置。</p>
+
+          <div class="puzzle-stage">
+            <div class="puzzle-reference-wrap">
+              <p class="puzzle-title">参考图</p>
+              <div class="puzzle-reference" id="puzzle-reference" aria-label="拼图参考图"></div>
+            </div>
+            <div class="puzzle-play-wrap">
+              <p class="puzzle-title">正在拼</p>
+              <div class="puzzle-board" id="puzzle-board" aria-label="拼图游戏区域"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="game-panel words-panel" id="panel-words">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">识字小游戏</p>
+              <h2>识字小卡片</h2>
+              <p class="panel-copy">可以看字找图，也可以切到拼音模式，顺便点按钮听发音。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="words-score">0</strong></span>
+              <span>连对 <strong id="words-streak">0</strong></span>
+              <span>最好连对 <strong id="words-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="words-refresh" type="button">换一张卡</button>
+            <button class="secondary-btn" id="words-reset" type="button">重新计分</button>
+          </div>
+
+          <div class="word-tools">
+            <div class="mode-switch" aria-label="识字模式切换">
+              <button class="mode-btn active" id="words-picture-mode" type="button">看图模式</button>
+              <button class="mode-btn" id="words-pinyin-mode" type="button">拼音模式</button>
+            </div>
+            <button class="secondary-btn speak-btn" id="words-speak" type="button">听发音</button>
+          </div>
+
+          <p class="status-text" id="words-status">看看汉字，再选出它对应的小图案。</p>
+
+          <div class="word-stage">
+            <div class="word-card" id="word-card">
+              <p class="word-mode-label" id="word-mode-label">看图模式</p>
+              <span class="word-emoji" id="word-emoji" hidden>🌞</span>
+              <p class="word-card-tip" id="word-card-tip">这个字读作</p>
+              <strong class="word-char" id="word-char">日</strong>
+              <p class="word-pinyin" id="word-pinyin">ri</p>
+              <p class="word-card-note" id="word-card-note">请找到和它对应的小图案。</p>
+            </div>
+            <div class="word-options" id="word-options" aria-label="识字选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel english-panel" id="panel-english">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">英语小游戏</p>
+              <h2>英语单词卡</h2>
+              <p class="panel-copy">看看图案和中文提示，再找出正确的英文单词。</p>
+            </div>
+            <div class="score-pills">
+              <span>答对 <strong id="english-score">0</strong></span>
+              <span>连对 <strong id="english-streak">0</strong></span>
+              <span>最好连对 <strong id="english-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="english-refresh" type="button">换一张卡</button>
+            <button class="secondary-btn" id="english-reset" type="button">重新计分</button>
+            <button class="secondary-btn" id="english-speak" type="button">读英文</button>
+          </div>
+
+          <p class="status-text" id="english-status">看看图案，再从右边找出正确英文。</p>
+
+          <div class="english-stage">
+            <div class="english-card" id="english-card">
+              <p class="english-card-tip">它的英文是哪个？</p>
+              <span class="english-emoji" id="english-emoji">🍎</span>
+              <strong class="english-meaning" id="english-meaning">苹果</strong>
+              <p class="english-note" id="english-note">点“读英文”可以听发音。</p>
+            </div>
+            <div class="english-options" id="english-options" aria-label="英语选项"></div>
+          </div>
+        </section>
+
+        <section class="game-panel trace-panel" id="panel-trace">
+          <div class="panel-head">
+            <div>
+              <p class="panel-tag">练习小游戏</p>
+              <h2>描线写字页</h2>
+              <p class="panel-copy">沿着大图案慢慢描一描，练习握笔和手眼配合。</p>
+            </div>
+            <div class="score-pills">
+              <span>描好 <strong id="trace-complete">0</strong></span>
+              <span>当前 <strong id="trace-target">A</strong></span>
+              <span>最好记录 <strong id="trace-best">0</strong></span>
+            </div>
+          </div>
+
+          <div class="game-controls">
+            <button class="primary-btn" id="trace-done" type="button">我描好啦</button>
+            <button class="secondary-btn" id="trace-clear" type="button">清空画板</button>
+            <button class="secondary-btn" id="trace-next" type="button">换一张</button>
+          </div>
+
+          <p class="status-text" id="trace-status">按住鼠标或手指，在画板上跟着大图案慢慢描线。</p>
+
+          <div class="trace-stage">
+            <div class="trace-picker" id="trace-picker" aria-label="描线模板选择"></div>
+            <div class="trace-board">
+              <div class="trace-guide" id="trace-guide" aria-hidden="true">A</div>
+              <canvas class="trace-canvas" id="trace-canvas"></canvas>
+            </div>
+          </div>
+        </section>
+        </main>
+      </section>
+
+      <footer class="page-footer">
+        没有广告，直接打开就能玩；装到主屏后会更像小应用，常用内容也能离线继续玩。
+      </footer>
+    </div>
+
+    <div class="celebration-modal" id="celebration-modal" hidden>
+      <div class="celebration-card" id="celebration-card" role="dialog" aria-modal="true" aria-labelledby="celebration-title">
+        <div class="celebration-burst" id="celebration-burst" aria-hidden="true"></div>
+        <p class="celebration-tag" id="celebration-tag">成长奖励</p>
+        <span class="celebration-icon" id="celebration-icon">🏅</span>
+        <h2 id="celebration-title">恭喜你</h2>
+        <p class="celebration-body" id="celebration-body">你又点亮了一份新的小成就。</p>
+        <div class="celebration-meta" id="celebration-meta" hidden></div>
+        <div class="celebration-actions">
+          <button class="secondary-btn" id="celebration-action" type="button" hidden>去看看</button>
+          <button class="primary-btn" id="celebration-close" type="button">继续玩</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="break-toast" id="break-toast" hidden aria-live="polite">
+      <div class="break-toast-copy">
+        <p class="break-toast-tag">休息一下</p>
+        <strong id="break-toast-title">该揉揉眼睛啦</strong>
+        <p id="break-toast-copy">已经玩了一阵子，站起来动动小手小脚会更舒服。</p>
+      </div>
+      <div class="break-toast-actions">
+        <button class="secondary-btn" id="break-toast-rest" type="button">休息一下</button>
+        <button class="primary-btn" id="break-toast-extend" type="button">再玩 5 分钟</button>
+      </div>
+    </aside>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+.DS_Store
+.rainbow-playground-server.log
+.rainbow-playground-server.pid
+
+test-results/

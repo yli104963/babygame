@@ -1,0 +1,67 @@
+{
+  "name": "彩虹游乐园",
+  "short_name": "彩虹游乐园",
+  "description": "一个适合小朋友直接打开就能玩的儿童小游戏合集，支持主屏安装和离线继续玩。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff7e2",
+  "theme_color": "#ff9a62",
+  "categories": ["games", "education", "kids"],
+  "icons": [
+    {
+      "src": "./icons/rainbow-fun-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/rainbow-fun-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "气球碰碰乐",
+      "short_name": "气球游戏",
+      "description": "直接打开气球小游戏",
+      "url": "./index.html#panel-balloon",
+      "icons": [
+        {
+          "src": "./icons/rainbow-fun-icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "识字小卡片",
+      "short_name": "识字卡",
+      "description": "直接打开识字小游戏",
+      "url": "./index.html#panel-words",
+      "icons": [
+        {
+          "src": "./icons/rainbow-fun-icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "描线写字页",
+      "short_name": "描一描",
+      "description": "直接打开描线小游戏",
+      "url": "./index.html#panel-trace",
+      "icons": [
+        {
+          "src": "./icons/rainbow-fun-icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ]
+}
